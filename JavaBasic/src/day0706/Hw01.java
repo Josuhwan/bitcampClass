@@ -1,9 +1,9 @@
-package day0705;
+package day0706;
 
 import java.util.Scanner;
 
 //숙제 1. 5명의 키와 몸무게를 토대로 해서 bmi결과를 입력한 사람까지만 출력하는 프로그램
-public class hw {
+public class Hw01 {
 	public static void main(String[] args) {
 		 Scanner scanner = new Scanner(System.in);
 		 
