@@ -21,9 +21,7 @@ public class Hw03 {
         int index = 0;
         
         while (true) {
-            System.out.println("1. 입력 2. 출력 3. 종료");
-            System.out.print("> ");
-            int userChoice = scanner.nextInt();
+            int userChoice = ScannerUtil.nextInt(scanner, "1. 입력 2. 출력 3. 종료");
             if (userChoice == 1) {
 
                 if (index < SIZE) {                   
