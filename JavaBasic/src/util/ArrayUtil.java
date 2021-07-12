@@ -4,6 +4,8 @@ package util;
 // 도움이 될만한 메소드들을 구현한 클래스
 
 import type.Student;
+import type.Board;
+
 public class ArrayUtil {
     // 1. int 배열
     // A. size()
@@ -453,20 +455,232 @@ public class ArrayUtil {
     public static String[] remove(String[] arr, String e) {
         return remove(arr, indexOf(arr, e));
     }
-    
+
     // 4. Student[]
-    // A. equals(s1, s2)
-    public static boolean equals(Student s1, Student s2) {
-        return s1.id == s2.id;
+
+    // B. size()
+    public static int size(Student[] arr) {
+        return arr.length;
     }
-    
+
+    // C. isEmpty()
+    public static boolean isEmpty(Student[] arr) {
+        return size(arr) == 0;
+    }
+
+    // D. get()
+    public static Student get(Student[] arr, int index) {
+        return arr[index];
+    }
+
+    // E. contains()
     public static boolean contains(Student[] arr, Student e) {
-        for(int i = 0; i < arr.length; i++) {
-            if(equals(arr[i], e)) {
+        for (int i = 0; i < arr.length; i++) {
+            if (e.equals(get(arr, i))) {
                 return true;
             }
         }
-        
+
         return false;
+    }
+
+    // F. indexOf()
+    public static int indexOf(Student[] arr, Student e) {
+        for (int i = 0; i < size(arr); i++) {
+            if (e.equals(get(arr, i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // G. lastIndexOf()
+    public static int lastIndexOf(Student[] arr, Student e) {
+        for (int i = size(arr) - 1; i >= 0; i--) {
+            if (e.equals(get(arr, i))) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    // H. add()
+    public static Student[] add(Student[] arr, Student e) {
+        Student[] temp = new Student[size(arr)];
+        for (int i = 0; i < size(arr); i++) {
+            temp[i] = get(arr, i);
+        }
+        arr = new Student[size(temp) + 1];
+        for (int i = 0; i < size(temp); i++) {
+            arr[i] = get(temp, i);
+        }
+        arr[size(arr) - 1] = e;
+
+        return arr;
+    }
+
+    // I. add(index)
+    public static Student[] add(Student[] arr, int index, Student e) {
+        if (index >= 0 && index < size(arr)) {
+            Student[] temp = new Student[size(arr)];
+            for (int i = 0; i < size(arr); i++) {
+                temp[i] = get(arr, i);
+            }
+            arr = new Student[size(temp) + 1];
+
+            for (int i = 0; i < index; i++) {
+                arr[i] = get(temp, i);
+            }
+
+            arr[index] = e;
+
+            for (int i = index; i < size(temp); i++) {
+                arr[i + 1] = get(temp, i);
+            }
+        }
+        return arr;
+    }
+
+    public static Student set(Student[] arr, int index, Student e) {
+        Student temp = get(arr, index);
+        arr[index] = e;
+        return temp;
+    }
+
+    public static Student[] remove(Student[] arr, int index) {
+        if (index >= 0 && index < size(arr)) {
+            Student[] temp = new Student[size(arr)];
+            for (int i = 0; i < size(arr); i++) {
+                temp[i] = get(arr, i);
+            }
+            arr = new Student[size(temp) - 1];
+            for (int i = 0; i < index; i++) {
+                arr[i] = get(temp, i);
+            }
+            for (int i = index + 1; i < size(temp); i++) {
+                arr[i - 1] = get(temp, i);
+            }
+        }
+        
+        return arr;
+    }
+
+    public static Student[] remove(Student[] arr, Student e) {
+        return remove(arr, indexOf(arr, e));
+    }
+
+    // 5. Board[]
+
+    // B. size()
+    public static int size(Board[] arr) {
+        return arr.length;
+    }
+
+    // C. isEmpty()
+    public static boolean isEmpty(Board[] arr) {
+        return size(arr) == 0;
+    }
+
+    // D. get()
+    public static Board get(Board[] arr, int index) {
+        return arr[index];
+    }
+
+    // E. contains()
+    public static boolean contains(Board[] arr, Board e) {
+        for (int i = 0; i < arr.length; i++) {
+            if (e.equals(get(arr, i))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // F. indexOf()
+    public static int indexOf(Board[] arr, Board e) {
+        for (int i = 0; i < size(arr); i++) {
+            if (e.equals(get(arr, i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // G. lastIndexOf()
+    public static int lastIndexOf(Board[] arr, Board e) {
+        for (int i = size(arr) - 1; i >= 0; i--) {
+            if (e.equals(get(arr, i))) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    // H. add()
+    public static Board[] add(Board[] arr, Board e) {
+        Board[] temp = new Board[size(arr)];
+        for (int i = 0; i < size(arr); i++) {
+            temp[i] = get(arr, i);
+        }
+        arr = new Board[size(temp) + 1];
+        for (int i = 0; i < size(temp); i++) {
+            arr[i] = get(temp, i);
+        }
+        arr[size(arr) - 1] = e;
+
+        return arr;
+    }
+
+    // I. add(index)
+    public static Board[] add(Board[] arr, int index, Board e) {
+        if (index >= 0 && index < size(arr)) {
+            Board[] temp = new Board[size(arr)];
+            for (int i = 0; i < size(arr); i++) {
+                temp[i] = get(arr, i);
+            }
+            arr = new Board[size(temp) + 1];
+
+            for (int i = 0; i < index; i++) {
+                arr[i] = get(temp, i);
+            }
+
+            arr[index] = e;
+
+            for (int i = index; i < size(temp); i++) {
+                arr[i + 1] = get(temp, i);
+            }
+        }
+        return arr;
+    }
+
+    public static Board set(Board[] arr, int index, Board e) {
+        Board temp = get(arr, index);
+        arr[index] = e;
+        return temp;
+    }
+
+    public static Board[] remove(Board[] arr, int index) {
+        if (index >= 0 && index < size(arr)) {
+            Board[] temp = new Board[size(arr)];
+            for (int i = 0; i < size(arr); i++) {
+                temp[i] = get(arr, i);
+            }
+            arr = new Board[size(temp) - 1];
+            for (int i = 0; i < index; i++) {
+                arr[i] = get(temp, i);
+            }
+            for (int i = index + 1; i < size(temp); i++) {
+                arr[i - 1] = get(temp, i);
+            }
+        }
+
+        return arr;
+    }
+
+    public static Board[] remove(Board[] arr, Board e) {
+        return remove(arr, indexOf(arr, e));
     }
 }
