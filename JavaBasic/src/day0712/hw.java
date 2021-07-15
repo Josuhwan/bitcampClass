@@ -1,11 +1,14 @@
 package day0712;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import type.Employee;
+import util.ScannerUtil;
+
 //숙제: 사원관리 프로그램을 클래스를 사용하여 만드시오
 //사원은 
 //사원 번호, 사원 이름, 사원 부서, 사원 직급, 사원 연봉의 정보가 들어갑니다.
-import type.Employee;
-import java.util.Scanner;
-import util.ScannerUtil;
-import java.util.ArrayList;
+
 public class hw {
 	
 	// 상수
@@ -15,6 +18,12 @@ public class hw {
 	private static Scanner scanner = new Scanner(System.in);
 	private static ArrayList<Employee> list = new ArrayList<>();
 	private static int nextId = 1;
+	
+	//메인 메소드
+	public static void main(String[] args) {
+		// 쇼메뉴 
+			showMenu();
+	}
 	
 	// 객체에 값을 넣어서 list에 추가하는
 	// insert()
@@ -145,11 +154,5 @@ public class hw {
 			}
 		}
 	}	
-	
-	//메인 메소드
-	public static void main(String[] args) {
-	// 쇼메뉴 
-		showMenu();
-	}
 
 }
