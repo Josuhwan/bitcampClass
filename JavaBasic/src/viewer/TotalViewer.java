@@ -8,12 +8,14 @@ import util.ScannerUtil;
 public class TotalViewer {
     private BoardViewer boardViewer;
     private UserViewer userViewer;
+    private ReplyViewer replyViewer;
     private Scanner scanner;
     private UserDTO logIn;
 
     public TotalViewer() {
         boardViewer = new BoardViewer();
         userViewer = new UserViewer();
+        replyViewer = new ReplyViewer();
         scanner = new Scanner(System.in);
     }
 
@@ -67,6 +69,12 @@ public class TotalViewer {
     private void inject() {
         boardViewer.setLogIn(logIn);
         boardViewer.setUserViwer(userViewer);
+        boardViewer.setReplyViewer(replyViewer);
+
         userViewer.setBoardViewer(boardViewer);
+        userViewer.setReplyViewer(replyViewer);
+
+        replyViewer.setUserViewer(userViewer);
+        replyViewer.setLogIn(logIn);
     }
 }

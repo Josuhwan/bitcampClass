@@ -14,6 +14,7 @@ public class BoardViewer {
     private Scanner scanner;
     private UserDTO logIn;
     private UserViewer userViewer;
+    private ReplyViewer replyViewer;
 
     public BoardViewer() {
         boardController = new BoardController();
@@ -26,6 +27,10 @@ public class BoardViewer {
 
     public void setUserViwer(UserViewer userViewer) {
         this.userViewer = userViewer;
+    }
+
+    public void setReplyViewer(ReplyViewer replyViewer) {
+        this.replyViewer = replyViewer;
     }
 
     private void insert() {
@@ -125,6 +130,9 @@ public class BoardViewer {
         System.out.println(b.getContent());
         System.out.println("===========================");
 
+        // 해당 게시글에 달린 댓글을 쭉 출력한다.
+        replyViewer.printBoardReply(id);
+
         // 만약 로그인 한 유저가 해당 글의 작성자와 일치하는 경우,
         // 글 수정, 삭제 기능을 실행시킬수 있는
         // showBoardMenu() 메소드를 실행시킨다.
@@ -134,9 +142,21 @@ public class BoardViewer {
         if (b.getWriterId() == logIn.getId()) {
             showBoardMenu(id);
         } else {
-            String message = new String("1. 뒤로가기");
-            int userChoice = ScannerUtil.nextInt(scanner, message, 1, 1);
-            printAll();
+            String message = new String("1. 댓글 입력 2. 댓글 삭제 3. 뒤로가기");
+            int userChoice = ScannerUtil.nextInt(scanner, message, 1, 3);
+            if (userChoice == 1) {
+                // 댓글 입력을 담당하는
+                // replyViewer의 메소드 실행
+                replyViewer.insert(id);
+            } else if (userChoice == 2) {
+                // 댓글 삭제를 담당하는
+                // replyViewer의 메소드 실행
+                replyViewer.delete(id);
+            }
+
+            if (userChoice != 3) {
+                printOne(id);
+            }
         }
 
     }

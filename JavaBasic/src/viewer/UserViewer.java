@@ -10,6 +10,7 @@ public class UserViewer {
     private UserController userController;
     private Scanner scanner;
     private BoardViewer boardViewer;
+    private ReplyViewer replyViewer;
 
     public UserViewer() {
         userController = new UserController();
@@ -18,6 +19,10 @@ public class UserViewer {
 
     public void setBoardViewer(BoardViewer boardViewer) {
         this.boardViewer = boardViewer;
+    }
+
+    public void setReplyViewer(ReplyViewer replyViewer) {
+        this.replyViewer = replyViewer;
     }
 
     public void register() {
@@ -106,14 +111,16 @@ public class UserViewer {
         System.out.println("회원 닉네임: " + u.getNickname());
         System.out.println("---------------------------------");
 
-        String message = new String("1. 작성글 보기 2. 수정 3. 회원 탈퇴 4. 뒤로 가기");
+        String message = new String("1. 작성글 보기 2. 작성댓글 보기 3. 수정 4. 회원 탈퇴 5. 뒤로 가기");
 
         int userChoice = ScannerUtil.nextInt(scanner, message, 1, 4);
         if (userChoice == 1) {
             boardViewer.printUserBoard(id);
         } else if (userChoice == 2) {
-            update(id);
+            replyViewer.printUserReply(id);
         } else if (userChoice == 3) {
+            update(id);
+        } else if (userChoice == 4) {
             u = delete(id);
         }
 
@@ -162,6 +169,7 @@ public class UserViewer {
             // 해당 회원 번호를 작성자 회원 번호로 가진
             // 게시글 삭제를 할 메소드를 여기서 실행시킨다.
             boardViewer.deleteByWriterId(id);
+            replyViewer.updateWriterId(id);
             userController.delete(id);
             return null;
         }
