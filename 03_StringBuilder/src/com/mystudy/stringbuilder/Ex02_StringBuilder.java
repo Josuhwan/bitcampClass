@@ -1,15 +1,15 @@
 package com.mystudy.stringbuilder;
 
-public class Ex01_StringBuffer {
+public class Ex02_StringBuilder {
 	
 	public static void main(String[] args) {
-		// StringBuffer 클래스
+		// StringBuilder 클래스
 		int num = 100;
 		String str1 = "Hello"; // 사용가능
 		String str = new String("Hello Java!!!");
 		System.out.println(str);
 		
-		StringBuffer sb = new StringBuffer("Hello Java!!!");
+		StringBuilder sb = new StringBuilder("Hello Java!!!");
 		System.out.println(sb);
 		System.out.println(sb.toString());
 		String sbValue = sb.toString();
@@ -17,7 +17,7 @@ public class Ex01_StringBuffer {
 		
 		System.out.println("sb.capacity() : " + sb.capacity());
 		
-		System.out.println("----------StringBuffer -----------");
+		System.out.println("----------StringBuilder -----------");
 		sb.append("반갑습니다").append("@@@@@@");
 		System.out.println(sb);
 		
@@ -42,7 +42,7 @@ public class Ex01_StringBuffer {
 		System.out.println("sb.capacity() : " + sb.capacity()); // 용량
 		
 		// ==========================================
-		StringBuffer sb2 = new StringBuffer(100); // 저장공간 100개 확보
+		StringBuilder sb2 = new StringBuilder(100); // 저장공간 100개 확보
 		System.out.println("sb2.length() : " + sb2.length()); // 저장 데이터 크기
 		System.out.println("sb2.capacity() : " + sb.capacity()); // 저장공간의 크기
 		
