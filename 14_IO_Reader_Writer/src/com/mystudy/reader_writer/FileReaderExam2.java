@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileReaderExam {
+public class FileReaderExam2 {
 
 	public static void main(String[] args) {
 		// 문자(Character) 단위 입력 처리
@@ -23,21 +23,13 @@ public class FileReaderExam {
 			fr = new FileReader(file);
 			
 			//2. 객체 사용 작업처리
-			int readChar = fr.read();
-			System.out.println("첫번째 문자 : " + readChar 
-					+ ", char: " + (char)readChar);
-			
-			readChar = fr.read();
-			System.out.println("두번째 문자 : " + readChar 
-					+ ", char: " + (char)readChar);
-			
-			readChar = fr.read();
-			System.out.println("세번째 문자 : " + readChar 
-					+ ", char: " + (char)readChar);
-			
-			readChar = fr.read();
-			System.out.println("네번째 문자 : " + readChar 
-					+ ", char: " + (char)readChar);
+			//[실습] 반복문으로 처리
+			while (true) {
+				int readChar = fr.read();
+				if (readChar == -1) break;
+				//System.out.println("int : " + readChar + ", char: " + (char)readChar);
+				System.out.print((char)readChar);
+			}
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
