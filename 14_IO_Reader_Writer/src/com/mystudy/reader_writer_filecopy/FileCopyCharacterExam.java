@@ -36,8 +36,8 @@ public class FileCopyCharacterExam {
 			
 			while (true) {
 				int readChar = fr.read();
-				if (readChar == -1) break;
-				fw.write((char)readChar);
+				if (readChar == -1) break; // 읽기
+				fw.write((char)readChar); // 쓰기
 				System.out.print((char)readChar);
 			}
 			

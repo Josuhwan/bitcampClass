@@ -23,6 +23,8 @@ public class FileWriterExam {
 			fw.flush(); //버퍼에 있는 데이터를 강제로 Output 처리
 			
 			fw.write("Hello Java!!!!");
+
+//			fw.write("Hello Java!!11");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

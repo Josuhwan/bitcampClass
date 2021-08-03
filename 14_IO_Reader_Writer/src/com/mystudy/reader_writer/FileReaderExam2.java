@@ -27,7 +27,7 @@ public class FileReaderExam2 {
 			while (true) {
 				int readChar = fr.read();
 				if (readChar == -1) break;
-				//System.out.println("int : " + readChar + ", char: " + (char)readChar);
+//				System.out.println("int : " + readChar + ", char: " + (char)readChar);
 				System.out.print((char)readChar);
 			}
 			
